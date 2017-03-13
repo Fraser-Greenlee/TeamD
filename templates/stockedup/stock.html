@@ -1,0 +1,29 @@
+{% extends 'stockedup/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	{{ 'Stock' }}
+{% endblock %}
+
+{% block body_block %}
+	<div id="currentStock">
+		<h1>Stock</h1><a>Edit</a>
+		<li>
+			{% for item in stock %}
+				<ul></ul>
+		</li>
+	</div>
+	<div id="upcomingOrders">
+		<h1>Upcoming Orders</h1>
+		<li>
+			{% for day in orders %}
+				<ul>
+					<span></span>
+					<li>
+						{% for order in day %}
+							<ul></ul>
+					</li>
+				</ul>
+		</li>
+	</div>
+{% endblock %}
