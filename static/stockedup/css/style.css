@@ -1,6 +1,7 @@
 html {
     background-color: #45a067;
     font-family: sans-serif;
+    font-size: 20px;
 }
 
 body {
@@ -16,4 +17,89 @@ div#header {
     margin: 0px;
     color: #fff;
     font-weight: 400;
+    font-size: 29px;
+}
+
+h1#titlebox {
+    color: #fff;
+    width: calc(100% - 300px);
+    margin: 30px;
+    margin-left: 15px;
+    font-size: 60px;
+    display: inline-block;
+    text-align: left;
+}
+
+div#authbox {
+    display: inline-block;
+    width: 223px;
+    position: absolute;
+    top: 94px;
+}
+
+#authbox a {
+    margin: 5px;
+    color: rgba(255, 255, 255, 0.41);
+    margin-right: 10px;
+}
+
+a.signup {
+    color: #fff!important;
+}
+
+#authbox span {
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#authbox.signup #signup {
+    display: block;
+}
+
+#authbox div {
+    display: none;
+    background-color: #fff;
+    padding: 1px;
+    padding-bottom: 5px;
+    text-align: center;
+    border-radius: 7px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+}
+
+input {
+    width: calc(100% - 27px);
+    border: none;
+    border-bottom: 2px solid #45a067;
+    font-size: 18px;
+    padding: 7px;
+    padding-bottom: 4px;
+    padding-left: 1px;
+    margin-top: 9px;
+}
+
+input[type="submit"] {
+    width: inherit;
+    color: green;
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 7px;
+}
+
+div#scalybox {
+    max-width: 900px;
+}
+
+@media (min-width: 900px) {
+	div#scalybox {
+    margin-left: calc(50% - 450px);
+	}
+}
+
+
+#authbox input[type="submit"] {
+    position: relative;
+    left: -65px;
+    padding-left: 4px;
 }
