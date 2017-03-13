@@ -1,0 +1,19 @@
+html {
+    background-color: #45a067;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+div#header {
+    background-color: #2e8f52;
+    padding: 15px;
+}
+
+#header h1 {
+    margin: 0px;
+    color: #fff;
+    font-weight: 400;
+}
