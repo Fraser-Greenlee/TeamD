@@ -43,7 +43,7 @@ div#authbox {
     margin-right: 10px;
 }
 
-#authbox.signup a.signup {
+a.signup {
     color: #fff!important;
 }
 
@@ -104,10 +104,26 @@ div#scalybox {
     padding-left: 4px;
 }
 
-#authbox.login a.login {
-    color: #fff!important;
+div#currentStock {
+    width: 200px;
+    display: inline-block;
+    margin: 0px;
 }
 
-#authbox.login #login {
-    display: block;
+div#upcomingOrders {
+    width: calc(100% - 200px);
+    display: inline-block;
+    margin: 0px;
+}
+
+#currentStock h1,#upcomingOrders h1 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0px;
+}
+
+#currentStock li {
+    background-color: #fff;
+    border-radius: 10px;
 }
