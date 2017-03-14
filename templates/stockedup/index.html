@@ -5,21 +5,25 @@
 {% endblock %}
 
 {% block body_block %}
-	<h1>Keep track of your stocks saving time and money.</h1>
-	<div id="authbox" class="signup">
-		<span><a class="signup">Signup</a><a class="login">Login</a></span>
-		<div id="login">
-			<form>
-				<input type="email" name="email" placeholder="email" />
-				<input type="password" name="password" placeholder="password" />
-			</form>
-		</div>
-		<div id="signup">
-			<form>
-				<input type="email" name="email" placeholder="email" />
-				<input type="password" name="password" placeholder="password" />
-				<input type="password" name="password" placeholder="confrim password" />
-			</form>
+	<div id="scalybox">
+		<h1 id="titlebox">Keep track of your stocks saving time and money.</h1>
+		<div id="authbox" class="signup">
+			<span><a class="signup">Signup</a><a class="login">Login</a></span>
+			<div id="login">
+				<form>
+					<input type="email" name="email" placeholder="email" />
+					<input type="password" name="password" placeholder="password" />
+					<input type="submit" value="submit" />
+				</form>
+			</div>
+			<div id="signup">
+				<form>
+					<input type="email" name="email" placeholder="email" />
+					<input type="password" name="password" placeholder="password" />
+					<input type="password" name="password" placeholder="confrim password" />
+					<input type="submit" value="submit" />
+				</form>
+			</div>
 		</div>
 	</div>
 {% endblock %}
