@@ -43,7 +43,7 @@ div#authbox {
     margin-right: 10px;
 }
 
-a.signup {
+#authbox.signup a.signup {
     color: #fff!important;
 }
 
@@ -102,4 +102,12 @@ div#scalybox {
     position: relative;
     left: -65px;
     padding-left: 4px;
+}
+
+#authbox.login a.login {
+    color: #fff!important;
+}
+
+#authbox.login #login {
+    display: block;
 }
