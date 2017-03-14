@@ -10,7 +10,8 @@
 		<h1>Stock</h1><a>Edit</a>
 		<li>
 			{% for item in stock %}
-				<ul></ul>
+				<ul><span>{{ item.name }}</span><span>{{ item.from }}</span><span>{{ item.amount }}kg</span></ul>
+			{% endfor %}
 		</li>
 	</div>
 	<div id="upcomingOrders">
@@ -18,12 +19,14 @@
 		<li>
 			{% for day in orders %}
 				<ul>
-					<span></span>
+					<h2><span>{{ day.date }}</span><span id="amount">£{{ day.total }}</span></h2>
 					<li>
-						{% for order in day %}
-							<ul></ul>
+						{% for order in day.orders %}
+							<ul><span>{{ item.name }}</span><span>£{{ item.cost }}</span><span>{{ item.amount }}kg</span></ul>
+						{% endfor %}
 					</li>
 				</ul>
+			{% endfor %}
 		</li>
 	</div>
 {% endblock %}
