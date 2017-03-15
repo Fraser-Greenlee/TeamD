@@ -1,7 +1,27 @@
 from django.shortcuts import render
+from stockedup.forms import SignUpForm
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 
 def index(request):
-	return render(request, 'stockedup/index.html')
+
+	registered = False
+
+	if request.method == 'POST':
+		signup_form = SignUpForm(data=request.POST)
+
+		if signup_form.is_valid():
+			user = signup_form.save()
+			user.set_password(user.password)
+			user.save()
+			registered = True
+			return render(request, 'stockedup/stock.html')
+		else:
+			print(signup_form.errors)
+	else:
+		signup_form = SignUpForm()
+
+	return render(request, 'stockedup/index.html', {'signup_form': signup_form, 'registered': registered})
 
 def stock(request):
 	# sample data
