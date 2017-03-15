@@ -41,10 +41,7 @@ div#authbox {
     margin: 5px;
     color: rgba(255, 255, 255, 0.41);
     margin-right: 10px;
-}
-
-a.signup {
-    color: #fff!important;
+    cursor: pointer;
 }
 
 #authbox span {
@@ -53,7 +50,7 @@ a.signup {
     margin-bottom: 5px;
 }
 
-#authbox.signup #signup {
+#authbox.signup #signup, #authbox.login #login {
     display: block;
 }
 
@@ -102,6 +99,7 @@ div#scalybox {
     position: relative;
     left: -65px;
     padding-left: 4px;
+    cursor: pointer;
 }
 
 div#currentStock {
@@ -126,4 +124,9 @@ div#upcomingOrders {
 #currentStock li {
     background-color: #fff;
     border-radius: 10px;
+}
+
+
+#authbox.signup a.signup,#authbox.login a.login {
+    color: #fff;
 }
