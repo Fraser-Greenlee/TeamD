@@ -93,6 +93,11 @@ div#scalybox {
     margin-left: calc(50% - 450px);
 	}
 }
+@media (min-width: 930px) {
+	div#fixedbox {
+		margin-left: calc(50% - 465px);
+	}
+}
 
 
 #authbox input[type="submit"] {
@@ -103,11 +108,13 @@ div#scalybox {
 }
 
 div#currentStock {
-    width: 390px;
+    width: 380px;
+    margin-right: 30px;
 }
 
 div#upcomingOrders {
-    width: 590px;
+    width: 500px;
+    float: right;
 }
 
 #currentStock h1,#upcomingOrders h1 {
@@ -218,5 +225,5 @@ div#upcomingOrders {
 
 
 div#fixedbox {
-    width: 1000px;
+    width: 930px;
 }
