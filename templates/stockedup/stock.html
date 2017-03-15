@@ -6,27 +6,29 @@
 {% endblock %}
 
 {% block body_block %}
-	<div id="currentStock">
-		<h1>Stock</h1><a>Edit</a>
-		<li>
-			{% for item in stock %}
-				<ul><span>{{ item.name }}</span><span>{{ item.from }}</span><span>{{ item.amount }}kg</span></ul>
-			{% endfor %}
-		</li>
-	</div>
-	<div id="upcomingOrders">
-		<h1>Upcoming Orders</h1>
-		<li>
-			{% for day in orders %}
-				<ul>
-					<h2><span>{{ day.date }}</span><span id="amount">£{{ day.total }}</span></h2>
-					<li>
-						{% for order in day.orders %}
-							<ul><span>{{ item.name }}</span><span>£{{ item.cost }}</span><span>{{ item.amount }}kg</span></ul>
-						{% endfor %}
-					</li>
-				</ul>
-			{% endfor %}
-		</li>
+	<div id="fixedbox">
+		<div id="currentStock" class="stockbox">
+			<span><h1>Stock</h1><a>Edit</a></span>
+			<li>
+				{% for item in stock %}
+					<ul><span>{{ item.name }}</span><span>{{ item.from }}</span><span>{{ item.amount }}kg</span></ul>
+				{% endfor %}
+			</li>
+		</div>
+		<div id="upcomingOrders" class="stockbox">
+			<h1>Upcoming Orders</h1>
+			<li>
+				{% for day in orders %}
+					<ul>
+						<h2><span>{{ day.date }}</span><span id="amount">£{{ day.total }}</span></h2>
+						<li>
+							{% for order in day.orders %}
+								<ul><span>{{ order.name }}</span><span>£{{ order.cost }}</span><span>{{ order.amount }}kg</span></ul>
+							{% endfor %}
+						</li>
+					</ul>
+				{% endfor %}
+			</li>
+		</div>
 	</div>
 {% endblock %}
