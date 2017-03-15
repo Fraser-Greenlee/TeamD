@@ -103,30 +103,115 @@ div#scalybox {
 }
 
 div#currentStock {
-    width: 200px;
-    display: inline-block;
-    margin: 0px;
+    width: 400px;
 }
 
 div#upcomingOrders {
-    width: calc(100% - 200px);
-    display: inline-block;
-    margin: 0px;
+    width: 474px;
 }
 
 #currentStock h1,#upcomingOrders h1 {
-    color: #fff;
-    font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0px;
+    display: inline-block;
+    color: #fff;
+    font-size: 25px;
 }
 
 #currentStock li {
     background-color: #fff;
     border-radius: 10px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+    display: block;
 }
 
 
 #authbox.signup a.signup,#authbox.login a.login {
     color: #fff;
+}
+
+#currentStock a {
+    font-weight: 300;
+    float: right;
+}
+
+.stockbox {
+    display: inline-block;
+    margin: 5px;
+    vertical-align: top;
+}
+
+.stockbox > span {
+    color: #fff;
+    margin: 10px;
+    display: block;
+    font-size: 25px;
+}
+
+
+.stockbox ul {
+    display: inline-block;
+    width: calc(100% - 20px);
+    margin: 0px;
+    padding: 10px;
+    border-top: 1px solid #2b6541;
+}
+
+#currentStock ul:first-child {
+    /* border: none; */
+}
+
+.stockbox ul span {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    width: 33%;
+    font-size: 20px;
+}
+
+.stockbox ul span:first-child {
+    text-align: left;
+}
+
+
+.stockbox ul span:last-child {
+    float: right;
+    text-align: right;
+}
+
+#upcomingOrders h1 {
+    margin: 10px;
+    margin-left: 0px;
+}
+
+#upcomingOrders li {
+    display: block;
+}
+
+#upcomingOrders > li > ul {
+    border: none;
+    padding: 0px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.fixedbox {
+    width: 900px;
+}
+
+.stockbox h2 {
+    font-weight: inherit;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+#upcomingOrders li li {
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+}
+
+.stockbox ul:first-child {
+    border: none;
 }
