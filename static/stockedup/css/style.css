@@ -103,11 +103,11 @@ div#scalybox {
 }
 
 div#currentStock {
-    width: 400px;
+    width: 390px;
 }
 
 div#upcomingOrders {
-    width: 474px;
+    width: 590px;
 }
 
 #currentStock h1,#upcomingOrders h1 {
@@ -214,4 +214,9 @@ div#upcomingOrders {
 
 .stockbox ul:first-child {
     border: none;
+}
+
+
+div#fixedbox {
+    width: 1000px;
 }
