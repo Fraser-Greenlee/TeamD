@@ -169,7 +169,11 @@ div#upcomingOrders {
   width: calc(100% - 20px);
   margin: 0px;
   padding: 10px;
-  border-bottom: 1px solid #2b6541;
+  border-top: 1px solid #2b6541;
+}
+
+#currentStock ul:first-child {
+  /* border: none; */
 }
 
 .stockbox ul span {
@@ -224,7 +228,7 @@ div#upcomingOrders {
   box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
 }
 
-.stockbox ul:last-child {
+.stockbox ul:first-child {
   border: none;
 }
 
@@ -249,22 +253,10 @@ ul#additem {
 #currentStock a.removelink {
     color: red;
     font-weight: 500;
+    float: none;
     display: block;
     margin-top: 12px;
     font-size: 18px;
     margin-left: 0px;
     width: 71px;
 }
-
-#currentStock > span > a:last-child:not(.edit) {
-    margin-right: 15px;
-}
-
-
-a.cancel {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-ul.willRemove {display: none;}
-
-.willRemove input {}
