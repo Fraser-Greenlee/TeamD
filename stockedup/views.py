@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def index(request):
-	return render(request, 'stockedup/index.html')
+	return redirect('/accounts/login/')
 
 def stock(request):
 	# sample data
