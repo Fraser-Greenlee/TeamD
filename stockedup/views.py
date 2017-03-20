@@ -22,26 +22,19 @@ def stock(request):
     for order in orders:
         orderDate = datetime.date.today() + datetime.timedelta(order[0])
         stringDate = str(days[orderDate.weekday()]) + ' ' + str(orderDate.day) + ' ' + str(months[orderDate.month - 1])
-        print(datedOrders.get(stringDate, 0))
-        datedOrders[stringDate] = {'total': datedOrders.get(stringDate, {'total': 0})['total'] + 10,
+        datedOrders[stringDate] = {'total': 0,
                                    'orders': datedOrders.get(stringDate, {'orders': []})['orders'] + [
                                        {'name': order[1].name,
                                         'from': order[1].supplier,
-                                        'cost': 30, 'amount': 10}]}
+                                        'cost': 30, 'amount': order[1].rate*7}]}
 
-        #            datedOrders.get(stringDate,{}) + \
-        #                                 {'total': 10,
-        #                                   'orders': datedOrders.get(stringDate,[]) + [{'name': order[1].name,
-        #                                                                                'from': order[1].supplier,
-        #                                                                                'cost': 30, 'amount': 10}]}
-        print(datedOrders[stringDate])
     for day in datedOrders:
         tempList = []
+        total = 0
         for order in datedOrders[day]['orders']:
+            total += order['cost']
             tempList += [order]
-        contextDict['orders'] += [{'date': day, 'total': datedOrders[day]['total'], 'orders': tempList}]
-
+        contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
 
             # sample data
-    print contextDict
     return render(request, 'stockedup/stock.html', context=contextDict)
