@@ -25,7 +25,6 @@ class Item(models.Model):
     rate = models.DecimalField(decimal_places=2, max_digits=10)
     stock = models.DecimalField(default=0, decimal_places=2, max_digits=10)
     lastUpdated = models.DateField()
-
     def __str__(self):
         return self.name
 
