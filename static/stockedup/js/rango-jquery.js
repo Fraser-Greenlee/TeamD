@@ -1,16 +1,18 @@
 $(document).ready(function(){
-    // When signup text is clicked show signup form
-    $("a.signup").click( function(event) {
-			if ($("#authbox").hasClass("login")) {
-				$("#authbox").addClass('signup').removeClass('login');
+		$("ul#additem").click( function(event) {
+			if ($("#currentStock").hasClass("edit")) {
+				newHtml =  '<ul>';
+				newHtml += '<p>name</p><input type="text" name="name">';
+				newHtml += '<p>supplier</p><input type="text" name="from" placeholder="name"><input type="email" placeholder="email address" name="fromemail">';
+				newHtml += '<p>amount (kg)</p><input type="number" name="amount">';
+				newHtml += '<p>kg per week</p><input type="number" name="kgpw">';
+				newHtml += '<p>price per kg</p><input type="number" name="ppkg">';
+				newHtml += '<a class="removelink">Remove</a>';
+				newHtml +=  '</ul>';
+				$(newHtml).insertBefore("#currentStock ul:last-child");
+				RemoveTriggers();
 			}
-    });
-    // When login text is clicked show login form
-    $("a.login").click( function(event) {
-			if ($("#authbox").hasClass("signup")) {
-				$("#authbox").addClass('login').removeClass('signup');
-			}
-    });
+		});
 		EditTrigger();
 });
 
