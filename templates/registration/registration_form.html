@@ -13,6 +13,13 @@
         <form method="post" action=".">
             {% csrf_token %}
             {{ form.as_p }}
+
+						{% for field in form %}
+    					{% for error in field.errors %}
+            		{{ field.error }}
+    					{% endfor %}
+  					{% endfor %}
+
             <input type="submit" value="Submit" />
         </form>
 			</div>

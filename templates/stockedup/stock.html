@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block body_block %}
+<a href="{% url 'auth_logout' %}?next=/accounts/login/">Logout</a>
+<a href="{% url 'auth_password_change' %}">Change Password</a>
 	<div id="fixedbox">
 		<div id="currentStock" class="stockbox">
 			<span><h1>Stock</h1><a class="edit">Edit</a></span>
