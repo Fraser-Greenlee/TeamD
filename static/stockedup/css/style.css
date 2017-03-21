@@ -169,7 +169,7 @@ div#upcomingOrders {
   width: calc(100% - 20px);
   margin: 0px;
   padding: 10px;
-  border-bottom: 1px solid #2b6541;
+  /* border-bottom: 1px solid #2b6541; */
 }
 
 .stockbox ul span {
@@ -224,8 +224,8 @@ div#upcomingOrders {
   box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
 }
 
-.stockbox ul:last-child {
-  border: none;
+.stockbox ul:first-child {
+  /* border: none; */
 }
 
 
@@ -234,7 +234,7 @@ div#fixedbox {
 }
 
 
-#currentStock input {width: calc(100% - 10px);margin-top: 10px;display: block;border: 1px solid #45a067;border-radius: 3px;padding: 4px;}
+#currentStock input {width: calc(100% - 10px);margin-top: 0px;display: block;border-bottom: 1px solid #45a067;padding: 5px;}
 
 #currentStock input:first-child {
     margin-top: 0px;
@@ -244,13 +244,15 @@ ul#additem {
     color: #32b732;
     cursor: pointer;
     padding-left: 12px;
+    display: none;
+    width: 37px;
 }
 
 #currentStock a.removelink {
     color: red;
     font-weight: 500;
     display: block;
-    margin-top: 12px;
+    margin-top: 15px;
     font-size: 18px;
     margin-left: 0px;
     width: 71px;
@@ -267,4 +269,17 @@ a.cancel {
 
 ul.willRemove {display: none;}
 
-.willRemove input {}
+
+.edit ul#additem {
+    display: block;
+}
+
+.stockbox.edit p {
+    margin: 0px;
+    color: #bfbfbf;
+    margin-top: 15px;
+}
+
+.stockbox.edit p:first-child {
+    margin: 0px;
+}

@@ -11,7 +11,7 @@
 			<span><h1>Stock</h1><a class="edit">Edit</a></span>
 			<li>
 				{% for item in stock %}
-					<ul><span data-type="name">{{ item.name }}</span><span data-type="from">{{ item.from }}</span><span data-type="amount">{{ item.amount }}kg</span></ul>
+					<ul data-kgpw="{{ item.kgpw }}" data-ppkg="{{ item.ppkg }}" data-fromemail="{{ item.from.email }}"><span data-type="name">{{ item.name }}</span><span data-type="from">{{ item.from }}</span><span data-type="amount">{{ item.amount }}kg</span></ul>
 				{% endfor %}
 				<ul id="additem">Add</ul>
 			</li>
