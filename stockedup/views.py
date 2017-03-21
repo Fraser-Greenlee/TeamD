@@ -63,5 +63,4 @@ def make_key(i,k):
 	return 'data['+str(i)+']['+k+']'
 
 def delete_user_items(request):
-	print Item.objects.filter(user=request.user)
 	Item.objects.filter(user=request.user).delete()
