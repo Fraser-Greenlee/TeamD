@@ -3,6 +3,7 @@ from stockedup.models import Supplier, Item
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import datetime
+import pprint
 
 
 def index(request):
@@ -36,7 +37,7 @@ def stock(request):
                                    'orders': datedOrders.get(stringDate, {'orders': []})['orders'] + [
                                        {'name': order[1].name,
                                         'from': order[1].supplier,
-                                        'cost': 30, 'amount': order[1].rate}]}
+                                        'cost': round(order[1].cost*order[1].rate), 'amount': order[1].rate}]}
     # Takes each day adds it to array in format context wants for view
     for day in datedOrders:
         tempList = []
@@ -45,7 +46,6 @@ def stock(request):
             total += order['cost']  # Sums up cost
             tempList += [order]
         contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
-
         # sample data
     return render(request, 'stockedup/stock.html', context=contextDict)
 
@@ -53,11 +53,20 @@ def stock(request):
 @login_required
 def save(request):
     if request.method == 'GET':
-        delete_user_items(request)
         d = request.GET
+        previousitems = Item.objects.filter(user=request.user)
+        #print previousitems
+        delete_user_items(request)
         for i in range(int(d['len'])):
             s = Supplier.objects.get_or_create(name=get(d, i, 'from'), email=get(d, i, 'fromemail'))[0]
             item = Item.objects.get_or_create(user=request.user, name=get(d, i, 'name'), supplier=s)[0]
+            if item in previousitems:
+                for index, previousitem in enumerate(previousitems):
+                    if previousitem == item:
+                       # print previousitem, item
+                        if int(previousitem.stock) != int(float(get(d, i, 'amount'))):
+                            print 'not done yet'
+                          #  print datetime.date.today(), previousitem.lastUpdated
             item.stock = float(get(d, i, 'amount'))
             item.rate = float(get(d, i, 'kgpw'))
             item.cost = float(get(d, i, 'ppkg'))
