@@ -6,20 +6,21 @@
 {% endblock %}
 
 {% block body_block %}
-<a href="{% url 'auth_logout' %}?next=/accounts/login/">Logout</a>
-<a href="{% url 'auth_password_change' %}">Change Password</a>
 	<div id="fixedbox">
 		<div id="currentStock" class="stockbox">
 			<span><h1>Stock</h1><a class="edit">Edit</a></span>
 			<li>
 				{% for item in stock %}
-					<ul data-kgpw="{{ item.kgpw }}" data-ppkg="{{ item.ppkg }}" data-fromemail="{{ item.from.email }}"><span data-type="name">{{ item.name }}</span><span data-type="from">{{ item.from }}</span><span data-type="amount">{{ item.amount }}kg</span></ul>
+					<ul class="itemrow" data-kgpw="{{ item.kgpw }}" data-ppkg="{{ item.ppkg }}" data-fromemail="{{ item.from.email }}"><span data-type="name">{{ item.name }}</span><span data-type="from">{{ item.from }}</span><span data-type="amount">{{ item.amount }}kg</span></ul>
 				{% endfor %}
 				<ul id="additem">Add</ul>
 			</li>
 		</div>
 		<div id="upcomingOrders" class="stockbox">
-			<h1>Upcoming Orders</h1>
+			<span><h1>Upcoming Orders</h1><a id="sendorder">Order</a></span>
+			<div id="inputorder">
+				Order stock up to <input name="ordertill" type="date"> <input name="orderbut" type="button" value="Submit" />
+			</div>
 			<li>
 				{% for day in orders %}
 					<ul>

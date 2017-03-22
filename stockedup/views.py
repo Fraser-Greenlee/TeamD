@@ -9,7 +9,7 @@ import pprint
 def index(request):
     return redirect('/accounts/login/')
 
-
+@login_required
 def stock(request):
     currentUser = request.user
     items = filter(lambda x: x.user == currentUser, Item.objects.all())  # Filters items to only the current user

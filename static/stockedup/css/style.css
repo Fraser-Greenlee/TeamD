@@ -1,11 +1,11 @@
 html {
-  background-color: #45a067;
   font-family: sans-serif;
   font-size: 20px;
 }
 
 body {
   margin: 0px;
+  background-color: #45a067;
 }
 
 div#header {
@@ -18,23 +18,20 @@ div#header {
   color: #fff;
   font-weight: 400;
   font-size: 29px;
+  display: inline-block;
 }
 
 h1#titlebox {
   color: #fff;
-  width: calc(100% - 300px);
   margin: 30px;
   margin-left: 15px;
   font-size: 60px;
-  display: inline-block;
+  display: block;
   text-align: left;
 }
 
 div#authbox {
-  display: inline-block;
-  width: 223px;
-  position: absolute;
-  top: 94px;
+  display: block;
 }
 
 #authbox a {
@@ -45,27 +42,27 @@ div#authbox {
 }
 
 #authbox span {
-  padding: 5px;
   display: block;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  color: #adadad;
 }
 
 #authbox.signup #signup, #authbox.login #login {
-  display: block;
+  /* display: inline-block; */
 }
 
-#authbox div {
-  display: none;
+#authbox > div {
+  display: inline-block;
+  text-align: right;
   background-color: #fff;
-  padding: 1px;
-  padding-bottom: 5px;
-  text-align: center;
+  padding: 15px;
+  margin-top: 5px;
   border-radius: 7px;
   box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
 }
 
 input {
-  width: calc(100% - 27px);
+  /* width: calc(100% - 27px); */
   border: none;
   border-bottom: 2px solid #45a067;
   font-size: 18px;
@@ -108,9 +105,6 @@ html div#upcomingOrders,html div#currentStock {
 
 
 #authbox input[type="submit"] {
-  position: relative;
-  left: -65px;
-  padding-left: 4px;
   cursor: pointer;
 }
 
@@ -169,7 +163,7 @@ div#upcomingOrders {
   width: calc(100% - 20px);
   margin: 0px;
   padding: 10px;
-  /* border-bottom: 1px solid #2b6541; */
+  border-bottom: 1px solid #2e8f52;
 }
 
 .stockbox ul span {
@@ -186,13 +180,10 @@ div#upcomingOrders {
 
 
 .stockbox ul span:last-child {
-  float: right;
   text-align: right;
 }
 
 #upcomingOrders h1 {
-  margin: 10px;
-  margin-left: 0px;
 }
 
 #upcomingOrders li {
@@ -213,8 +204,8 @@ div#upcomingOrders {
 
 .stockbox h2 {
   font-weight: inherit;
-  margin: 5px;
-  margin-top: 0px;
+  margin: 10px;
+  margin-bottom: 1px;
 }
 
 #upcomingOrders li li {
@@ -224,13 +215,14 @@ div#upcomingOrders {
   box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
 }
 
-.stockbox ul:first-child {
-  /* border: none; */
+#currentStock:not(.edit) ul:nth-last-child(2) {
+  border: none;
 }
 
 
 div#fixedbox {
   max-width: 930px;
+  margin-bottom: 30px;
 }
 
 
@@ -246,6 +238,7 @@ ul#additem {
     padding-left: 12px;
     display: none;
     width: 37px;
+    border: none;
 }
 
 #currentStock a.removelink {
@@ -282,4 +275,84 @@ ul.willRemove {display: none;}
 
 .stockbox.edit p:first-child {
     margin: 0px;
+}
+
+#header span {
+    float: right;
+    font-size: 19px;
+    font-weight: 300;
+    margin-top: 7px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#header a {
+    margin-left: 15px;
+}
+
+
+#upcomingOrders ul:last-child {
+    border: none;
+}
+
+.stockbox ul h2 span {
+    width: 50%;
+}
+
+a#sendorder {
+    font-weight: 300;
+    float: right;
+    cursor: pointer;
+}
+
+div#inputorder {
+    display: none;
+    padding: 10px;
+    background: #fff;
+    color: #bbbbbb;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+    font-size: 18px;
+}
+
+#inputorder input[type="date"] {
+    width: inherit;
+    margin: 0px;
+    padding: 0px;
+}
+
+#inputorder input[type="button"] {
+    background: none;
+    width: inherit;
+    border: none;
+    color: #45a067;
+    font-weight: 600;
+    float: right;
+    margin: 0px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+div#inputorder.show {
+    display: block;
+}
+
+a#sendorder.cancelorder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#authbox p {
+    margin: 0px;
+}
+
+#authbox form {
+    text-align: end;
+};
+
+
+span.helptext {
+	font-size: 16px;
 }

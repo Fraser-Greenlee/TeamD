@@ -1,19 +1,30 @@
 $(document).ready(function(){
-		$("ul#additem").click( function(event) {
-			if ($("#currentStock").hasClass("edit")) {
-				newHtml =  '<ul>';
-				newHtml += '<p>name</p><input type="text" name="name">';
-				newHtml += '<p>supplier</p><input type="text" name="from" placeholder="name"><input type="email" placeholder="email address" name="fromemail">';
-				newHtml += '<p>amount (kg)</p><input type="number" name="amount">';
-				newHtml += '<p>kg per week</p><input type="number" name="kgpw">';
-				newHtml += '<p>price per kg</p><input type="number" name="ppkg">';
-				newHtml += '<a class="removelink">Remove</a>';
-				newHtml +=  '</ul>';
-				$(newHtml).insertBefore("#currentStock ul:last-child");
-				RemoveTriggers();
-			}
-		});
-		EditTrigger();
+	$("ul#additem").click( function(event) {
+		if ($("#currentStock").hasClass("edit")) {
+			newHtml =  '<ul>';
+			newHtml += '<p>name</p><input type="text" name="name">';
+			newHtml += '<p>supplier</p><input type="text" name="from" placeholder="name"><input type="email" placeholder="email address" name="fromemail">';
+			newHtml += '<p>amount (kg)</p><input type="number" name="amount">';
+			newHtml += '<p>kg per week</p><input type="number" name="kgpw">';
+			newHtml += '<p>price per kg</p><input type="number" name="ppkg">';
+			newHtml += '<a class="removelink">Remove</a>';
+			newHtml +=  '</ul>';
+			$(newHtml).insertBefore("#currentStock ul:last-child");
+			RemoveTriggers();
+		}
+	});
+	$("#sendorder").click( function(event) {
+		if ($("#sendorder").hasClass("cancelorder")) {
+			$("#inputorder").removeClass("show");
+			$("#sendorder").removeClass("cancelorder");
+			$("#sendorder").html("Order");
+		} else {
+			$("#inputorder").addClass("show");
+			$("#sendorder").addClass("cancelorder");
+			$("#sendorder").html("Cancel");
+		}
+	});
+	EditTrigger();
 });
 
 function EditTrigger() {
