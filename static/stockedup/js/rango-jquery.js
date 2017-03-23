@@ -100,5 +100,12 @@ function SaveCancelTriggers() {
 		$("#currentStock > span").html('<h1>Stock</h1><a class="edit">Edit</a>');
 		EditTrigger();
 		$("#currentStock").removeClass("edit");
+		refreshUpcomingOrders();
+	});
+}
+
+function refreshUpcomingOrders() {
+	$.get('ajax/upcomingorders', function(data) {
+		$("#upcomingOrders > li").html(data);
 	});
 }
