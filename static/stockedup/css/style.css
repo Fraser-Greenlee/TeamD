@@ -32,6 +32,7 @@ h1#titlebox {
 
 div#authbox {
   display: block;
+  margin-left: 15px;
 }
 
 #authbox a {
@@ -358,4 +359,8 @@ span.helptext {
 }
 
 
-input[type="submit"]#orderbut {width: inherit;border: none;color: #45a067;font-weight: 600;float: right;margin: 0px;padding: 5px;cursor: pointer;}
+input[type="submit"]#orderbut {width: inherit;border: none;color: #45a067;font-weight: 600;float: right;margin: 0px;padding: 2px;cursor: pointer;}
+
+select {
+    font-size: 15px;
+}

@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from stockedup.models import Supplier, Item
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.core.mail import send_mail
 import datetime
 import pprint
+from decimal import Decimal
 
 
 def index(request):
@@ -52,8 +55,32 @@ def stock(request):
 @login_required
 def ordertill(request):
 	if request.method == 'POST':
-		print request.POST['ordertill']
-		return HttpResponse("a")
+		orders = request.POST['ordertill'].split(',,')
+		emails = {}
+		for item in orders:
+			# item = [u'potatoes', u'2.00', u'4.0', u'b@b.com']
+			item = item.split(',')
+			if len(item) < 4:
+				continue
+			it = Item.objects.filter(user=request.user,name=item[0])[0]
+			it.stock += Decimal(item[1])
+			it.save()
+			#
+			print item
+			if item[3] not in emails:
+				emails[item[3]] = """
+Dear {name},
+
+I would like to order,"""
+			emails[item[3]] += """
+{amount}kg of {name} for £{cost}""".format(amount=item[2], name=item[0], cost=item[1])
+		#
+		for address in emails.keys():
+			try:
+				send_mail("Orders", emails[address], request.user.email, [address])
+			except Exception:
+				print 'not sent'
+	return redirect('/stock')
 
 @login_required
 def save(request):
