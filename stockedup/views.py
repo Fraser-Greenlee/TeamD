@@ -129,12 +129,24 @@ def pred(request):
 def save(request):
 	if request.method == 'GET':
 		d = request.GET
+		olditems = Item.objects.filter(user=request.user)
 		delete_user_items(request)
 		for i in range(int(d['len'])):
 			s = Supplier.objects.get_or_create(name=get(d, i, 'from'), email=get(d, i, 'fromemail'))[0]
 			item = Item.objects.get_or_create(user=request.user, name=get(d, i, 'name'), supplier=s)[0]
 			item.stock = float(get(d, i, 'amount'))
-			item.rate = float(get(d, i, 'kgpw'))
+			# find item of same names in olditems
+			olditems.filter(name=item.name)
+			if len(olditems) > 0:
+				olditem = olditems[0]
+				if olditem.amount > item.amount:
+					daysdff = (datetime.date.today() - olditem.lastUpdated).days()
+					amountdff = olditem.amount - item.amount
+					if daysdff > 0 and amountdff > 0:
+						print 'Updated Rate'
+						item.rate = amountdff/daysdff
+			else:
+				item.rate = float(get(d, i, 'kgpw'))
 			item.cost = float(get(d, i, 'ppkg'))
 			item.save()
 		return HttpResponse("saved")
