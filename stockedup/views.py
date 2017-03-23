@@ -139,14 +139,15 @@ def save(request):
 			olditems.filter(name=item.name)
 			if len(olditems) > 0:
 				olditem = olditems[0]
-				if olditem.stock > item.stock:
-					daysdff = (datetime.date.today() - olditem.lastUpdated).days()
-					amountdff = olditem.stock - item.stock
-					if daysdff > 0 and amountdff > 0:
-						print 'Updated Rate'
-						item.rate = amountdff/daysdff
-			else:
-				item.rate = float(get(d, i, 'kgpw'))
+				if float(get(d, i, 'kgpw')) != olditem.rate:
+					item.rate = float(get(d, i, 'kgpw'))
+				else:
+					if olditem.stock > item.stock:
+						daysdff = (datetime.date.today() - olditem.lastUpdated).days()
+						amountdff = olditem.stock - item.stock
+						if daysdff > 0 and amountdff > 0:
+							print 'Updated Rate:', amountdff/daysdff
+							item.rate = amountdff/daysdff
 			item.cost = float(get(d, i, 'ppkg'))
 			item.save()
 		return HttpResponse("saved")
