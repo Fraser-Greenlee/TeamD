@@ -139,9 +139,9 @@ def save(request):
 			olditems.filter(name=item.name)
 			if len(olditems) > 0:
 				olditem = olditems[0]
-				if olditem.amount > item.amount:
+				if olditem.stock > item.stock:
 					daysdff = (datetime.date.today() - olditem.lastUpdated).days()
-					amountdff = olditem.amount - item.amount
+					amountdff = olditem.stock - item.stock
 					if daysdff > 0 and amountdff > 0:
 						print 'Updated Rate'
 						item.rate = amountdff/daysdff
