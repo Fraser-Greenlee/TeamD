@@ -1,0 +1,10 @@
+{% for day in orders %}
+	<ul>
+		<h2><span>{{ day.date }}</span><span id="amount">£{{ day.total }}</span></h2>
+		<li>
+			{% for order in day.orders %}
+				<ul><span>{{ order.name }}</span><span>£{{ order.cost }}</span><span>{{ order.amount }}kg</span></ul>
+			{% endfor %}
+		</li>
+	</ul>
+{% endfor %}
