@@ -356,3 +356,6 @@ a#sendorder.cancelorder {
 span.helptext {
 	font-size: 16px;
 }
+
+
+input[type="submit"]#orderbut {width: inherit;border: none;color: #45a067;font-weight: 600;float: right;margin: 0px;padding: 5px;cursor: pointer;}

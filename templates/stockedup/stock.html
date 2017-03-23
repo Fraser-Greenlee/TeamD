@@ -19,7 +19,10 @@
 		<div id="upcomingOrders" class="stockbox">
 			<span><h1>Upcoming Orders</h1><a id="sendorder">Order</a></span>
 			<div id="inputorder">
-				Order stock up to <input name="ordertill" type="date"> <input name="orderbut" type="button" value="Submit" />
+				<form action="/ordertill" method="post">
+					{% csrf_token %}
+					Order stock up to <input name="ordertill" type="date"> <input id="orderbut" type="submit" value="Submit" />
+				</form>
 			</div>
 			<li>
 				{% for day in orders %}

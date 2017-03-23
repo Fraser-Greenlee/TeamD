@@ -13,7 +13,7 @@ $(document).ready(function(){
 			RemoveTriggers();
 		}
 	});
-	$("#sendorder").click( function(event) {
+	$("#sendorder").click(function(event) {
 		if ($("#sendorder").hasClass("cancelorder")) {
 			$("#inputorder").removeClass("show");
 			$("#sendorder").removeClass("cancelorder");
@@ -23,6 +23,10 @@ $(document).ready(function(){
 			$("#sendorder").addClass("cancelorder");
 			$("#sendorder").html("Cancel");
 		}
+	});
+	$("orderbut").click(function(event) {
+		before = $("[name='ordertill']").val();
+		window.location.replace("http://127.0.0.1:8000/");
 	});
 	EditTrigger();
 });

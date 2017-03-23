@@ -13,6 +13,7 @@ urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'^stock', views.stock, name='stock'),
 	url(r'^ajax/save', views.save, name='save'),
+	url(r'^ordertill', views.ordertill, name='ordertill'),
   url(r'^admin/', admin.site.urls),
 	url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
 	url(r'^accounts/', include('registration.backends.simple.urls')),
