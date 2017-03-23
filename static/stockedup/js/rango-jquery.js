@@ -4,7 +4,7 @@ $(document).ready(function(){
 			newHtml =  '<ul>';
 			newHtml += '<p>name</p><input type="text" name="name">';
 			newHtml += '<p>supplier</p><input type="text" name="from" placeholder="name"><input type="email" placeholder="email address" name="fromemail">';
-			newHtml += '<p>amount (kg)</p><input type="number" name="amount">';
+			newHtml += '<p>amount (kg)<a class="pred">predict</a></p><input type="number" name="amount">';
 			newHtml += '<p>kg per week</p><input type="number" name="kgpw">';
 			newHtml += '<p>price per kg</p><input type="number" name="ppkg">';
 			newHtml += '<a class="removelink">Remove</a>';
@@ -39,7 +39,7 @@ function EditTrigger() {
 			newHtml += '<p>supplier</p><input type="text" name="from" value="'+$(this).children("[data-type='from']").text()+'"><input type="email" name="fromemail" value="'+$(this).attr('data-fromemail')+'">';
 			newHtml += '<p>amount (kg)</p><input type="number" name="amount" value="'+$(this).children("[data-type='amount']").text().slice(0,-2)+'">';
 			newHtml += '<p>kg per week</p><input type="number" name="kgpw" value="'+$(this).attr('data-kgpw')+'">';
-			newHtml += '<p>price per kg</p><input type="number" name="ppkg" value="'+$(this).attr('data-ppkg')+'">';
+			newHtml += '<p>price per kg<a class="pred">predict</a></p><input type="number" name="ppkg" value="'+$(this).attr('data-ppkg')+'">';
 			newHtml += '<a class="removelink">Remove</a>';
 			$(this).html(newHtml);
 		});
@@ -53,6 +53,14 @@ function EditTrigger() {
 function RemoveTriggers() {
 	$("#currentStock a.removelink").click( function(event) {
 		$(this).parent().addClass("willRemove");
+	});
+	$(".pred").click(function(event) {
+		box = $(this).parent().parent();
+		$.get('ajax/predict', {'name':$(box).children("[name='name']").val()}, function(data) {
+			console.log("data");
+			console.log(data);
+			$(box).children("[name='ppkg']").val(data);
+		});
 	});
 }
 

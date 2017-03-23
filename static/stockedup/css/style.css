@@ -371,3 +371,9 @@ form.messform {
     padding: 5px;
     border-radius: 5px;
 }
+
+a.pred {
+    color: green;
+    float: initial!important;
+    margin-left: 15px;
+}

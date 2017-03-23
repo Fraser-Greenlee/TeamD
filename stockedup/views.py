@@ -4,10 +4,9 @@ from stockedup.models import Supplier, Item
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.mail import send_mail
-import datetime
+import datetime, json, requests
 import pprint
 from decimal import Decimal
-
 
 def index(request):
 	return redirect('/accounts/login/')
@@ -83,22 +82,6 @@ I would like to order,"""
 	return redirect('/stock')
 
 @login_required
-def save(request):
-	if request.method == 'GET':
-		d = request.GET
-		delete_user_items(request)
-		for i in range(int(d['len'])):
-			s = Supplier.objects.get_or_create(name=get(d, i, 'from'), email=get(d, i, 'fromemail'))[0]
-			item = Item.objects.get_or_create(user=request.user, name=get(d, i, 'name'), supplier=s)[0]
-			item.stock = float(get(d, i, 'amount'))
-			item.rate = float(get(d, i, 'kgpw'))
-			item.cost = float(get(d, i, 'ppkg'))
-			item.save()
-		return HttpResponse("saved")
-	else:
-		return HttpResponse("must be GET request")
-
-@login_required
 def upcomingorders(request):
 	if request.method == 'GET':
 		currentUser = request.user
@@ -136,10 +119,27 @@ def upcomingorders(request):
 				total += order['cost']  # Sums up cost
 				tempList += [order]
 			contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
-	print 'hi'
 	return render(request, 'stockedup/upcomingorders.html', context=contextDict)
 
+@login_required
+def pred(request):
+	return HttpResponse(json.loads(requests.get('https://dev.tescolabs.com/grocery/products/?query='+request.GET['name']+'&offset=0&limit=1', headers={'Ocp-Apim-Subscription-Key':'14a1586c048a4159ad48693976e74894'}).content)['uk']['ghs']['products']['results'][0]['unitprice'])
 
+@login_required
+def save(request):
+	if request.method == 'GET':
+		d = request.GET
+		delete_user_items(request)
+		for i in range(int(d['len'])):
+			s = Supplier.objects.get_or_create(name=get(d, i, 'from'), email=get(d, i, 'fromemail'))[0]
+			item = Item.objects.get_or_create(user=request.user, name=get(d, i, 'name'), supplier=s)[0]
+			item.stock = float(get(d, i, 'amount'))
+			item.rate = float(get(d, i, 'kgpw'))
+			item.cost = float(get(d, i, 'ppkg'))
+			item.save()
+		return HttpResponse("saved")
+	else:
+		return HttpResponse("must be GET request")
 
 def get(data, i, k):
 	return data[make_key(i, k)]
