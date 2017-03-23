@@ -31,7 +31,7 @@ def stock(request):
 	# Sorts the orders into a dictionary with keys of the day
 	# of order in form ie. ['Mon 28 Jan'] which has all orders of the day
 	for order in orders:
-		orderDate = datetime.date.today() + datetime.timedelta(order[0])  # Find reorder date
+		orderDate = order[1].lastUpdated + datetime.timedelta(order[0])  # Find reorder date
 		# Turns numerical date into text format
 		stringDate = str(days[orderDate.weekday()]) + ' ' + str(orderDate.day) + ' ' + str(months[orderDate.month - 1])
 		# Adds to dictionary in format {total, Orders[]}
@@ -102,7 +102,7 @@ def upcomingorders(request):
 		# Sorts the orders into a dictionary with keys of the day
 		# of order in form ie. ['Mon 28 Jan'] which has all orders of the day
 		for order in orders:
-			orderDate = datetime.date.today() + datetime.timedelta(order[0])  # Find reorder date
+			orderDate = order[1].lastUpdated + datetime.timedelta(order[0])  # Find reorder date
 			# Turns numerical date into text format
 			stringDate = str(days[orderDate.weekday()]) + ' ' + str(orderDate.day) + ' ' + str(months[orderDate.month - 1])
 			# Adds to dictionary in format {total, Orders[]}
