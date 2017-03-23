@@ -64,7 +64,6 @@ def ordertill(request):
 		print orders
 		emails = {}
 		for item in orders:
-			# [{"name":"Soup","amount":"5.00kg","cost":"£10.0","fromemail":"H@mail.com"}]
 			dbitem = Item.objects.filter(name=item['name'],user=request.user)[0]
 			dbitem.stock += Decimal(item['amount'][:-2])
 			dbitem.save()
