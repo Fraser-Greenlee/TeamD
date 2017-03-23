@@ -1,379 +1,403 @@
+/*
+
+We decided to not use a CSS framework as we thought we could do just as good a job
+using raw CSS and chrome developer tools to edit the files live in the browser.
+
+*/
+
+
+/**/
+
+
+/*
+
+Media Queries - To make page responsive
+
+*/
+
+@media (min-width: 900px) {
+	div#scalybox {
+		margin-left: calc(50% - 450px);
+	}
+}
+
+@media (min-width: 930px) {
+	div#fixedbox {
+		margin-left: calc(50% - 465px);
+	}
+}
+
+@media (max-width: 930px) {
+	html div#upcomingOrders, html div#currentStock {
+		float: none;
+		width: calc(100% - 10px);
+		margin: 5px;
+	}
+}
+
+
+/**/
+
 html {
-  font-family: sans-serif;
-  font-size: 20px;
+	font-family: sans-serif;
+	font-size: 20px;
 }
 
 body {
-  margin: 0px;
-  background-color: #45a067;
+	margin: 0px;
+	background-color: #45a067;
 }
 
 div#header {
-  background-color: #2e8f52;
-  padding: 15px;
+	background-color: #2e8f52;
+	padding: 15px;
 }
 
 #header h1 {
-  margin: 0px;
-  color: #fff;
-  font-weight: 400;
-  font-size: 29px;
-  display: inline-block;
+	margin: 0px;
+	color: #fff;
+	font-weight: 400;
+	font-size: 29px;
+	display: inline-block;
 }
 
 h1#titlebox {
-  color: #fff;
-  margin: 30px;
-  margin-left: 15px;
-  font-size: 60px;
-  display: block;
-  text-align: left;
+	color: #fff;
+	margin: 30px;
+	margin-left: 15px;
+	font-size: 60px;
+	display: block;
+	text-align: left;
 }
 
 div#authbox {
-  display: block;
-  margin-left: 15px;
+	display: block;
+	margin-left: 15px;
 }
 
 #authbox a {
-  margin: 5px;
-  color: rgba(255, 255, 255, 0.41);
-  margin-right: 10px;
-  cursor: pointer;
+	margin: 5px;
+	color: rgba(255, 255, 255, 0.41);
+	margin-right: 10px;
+	cursor: pointer;
 }
 
 #authbox span {
-  display: block;
-  margin-top: 10px;
-  color: #adadad;
+	display: block;
+	margin-top: 10px;
+	color: #adadad;
 }
 
-#authbox.signup #signup, #authbox.login #login {
-  /* display: inline-block; */
-}
-
-#authbox > div {
-  display: inline-block;
-  text-align: right;
-  background-color: #fff;
-  padding: 15px;
-  margin-top: 5px;
-  border-radius: 7px;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+#authbox>div {
+	display: inline-block;
+	text-align: right;
+	background-color: #fff;
+	padding: 15px;
+	margin-top: 5px;
+	border-radius: 7px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 input {
-  /* width: calc(100% - 27px); */
-  border: none;
-  border-bottom: 2px solid #45a067;
-  font-size: 18px;
-  padding: 7px;
-  padding-bottom: 4px;
-  padding-left: 1px;
-  margin-top: 9px;
+	border: none;
+	border-bottom: 2px solid #45a067;
+	font-size: 18px;
+	padding: 7px;
+	padding-bottom: 4px;
+	padding-left: 1px;
+	margin-top: 9px;
 }
 
 input[type="submit"] {
-  width: inherit;
-  color: green;
-  font-weight: bold;
-  background: none;
-  border: none;
-  padding: 7px;
+	width: inherit;
+	color: green;
+	font-weight: bold;
+	background: none;
+	border: none;
+	padding: 7px;
 }
 
 div#scalybox {
-  max-width: 900px;
+	max-width: 900px;
 }
-
-@media (min-width: 900px) {
-div#scalybox {
-  margin-left: calc(50% - 450px);
-}
-}
-@media (min-width: 930px) {
-div#fixedbox {
-	margin-left: calc(50% - 465px);
-}
-}
-@media (max-width: 930px) {
-html div#upcomingOrders,html div#currentStock {
-	float: none;
-	width: calc(100% - 10px);
-	margin: 5px;
-}
-}
-
 
 #authbox input[type="submit"] {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 div#currentStock {
-  width: 380px;
-  margin-right: 30px;
+	width: 380px;
+	margin-right: 30px;
 }
 
 div#upcomingOrders {
-  width: 500px;
-  float: right;
+	width: 500px;
+	float: right;
 }
 
-#currentStock h1,#upcomingOrders h1 {
-  font-weight: 600;
-  margin: 0px;
-  display: inline-block;
-  color: #fff;
-  font-size: 25px;
+#currentStock h1, #upcomingOrders h1 {
+	font-weight: 600;
+	margin: 0px;
+	display: inline-block;
+	color: #fff;
+	font-size: 25px;
 }
 
 #currentStock li {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
-  display: block;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+	display: block;
 }
 
-
-#authbox.signup a.signup,#authbox.login a.login {
-  color: #fff;
+#authbox.signup a.signup, #authbox.login a.login {
+	color: #fff;
 }
 
 #currentStock a {
-  font-weight: 300;
-  float: right;
-  cursor: pointer;
+	font-weight: 300;
+	float: right;
+	cursor: pointer;
 }
 
 .stockbox {
-  display: inline-block;
-  margin: 5px;
-  vertical-align: top;
+	display: inline-block;
+	margin: 5px;
+	vertical-align: top;
 }
 
-.stockbox > span {
-  color: #fff;
-  margin: 10px;
-  display: block;
-  font-size: 25px;
+.stockbox>span {
+	color: #fff;
+	margin: 10px;
+	display: block;
+	font-size: 25px;
 }
-
 
 .stockbox ul {
-  display: inline-block;
-  width: calc(100% - 20px);
-  margin: 0px;
-  padding: 10px;
-  border-bottom: 1px solid #2e8f52;
+	display: inline-block;
+	width: calc(100% - 20px);
+	margin: 0px;
+	padding: 10px;
+	border-bottom: 1px solid #2e8f52;
 }
 
 .stockbox ul span {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  width: 33%;
-  font-size: 20px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	width: 33%;
+	font-size: 20px;
 }
 
 .stockbox ul span:first-child {
-  text-align: left;
+	text-align: left;
 }
-
 
 .stockbox ul span:last-child {
-  text-align: right;
+	text-align: right;
 }
 
-#upcomingOrders h1 {
-}
+#upcomingOrders h1 {}
 
 #upcomingOrders li {
-  display: block;
+	display: block;
 }
 
-#upcomingOrders > li > ul {
-  border: none;
-  padding: 0px;
-  color: #fff;
-  font-size: 15px;
-  width: 100%;
+#upcomingOrders>li>ul {
+	border: none;
+	padding: 0px;
+	color: #fff;
+	font-size: 15px;
+	width: 100%;
 }
 
 .fixedbox {
-  width: 900px;
+	width: 900px;
 }
 
 .stockbox h2 {
-  font-weight: inherit;
-  margin: 10px;
-  margin-bottom: 1px;
+	font-weight: inherit;
+	margin: 10px;
+	margin-bottom: 1px;
 }
 
 #upcomingOrders li li {
-  background: #fff;
-  color: #000;
-  border-radius: 10px;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+	background: #fff;
+	color: #000;
+	border-radius: 10px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 #currentStock:not(.edit) ul:nth-last-child(2) {
-  border: none;
+	border: none;
 }
-
 
 div#fixedbox {
-  max-width: 930px;
-  margin-bottom: 30px;
+	max-width: 930px;
+	margin-bottom: 30px;
 }
 
-
-#currentStock input {width: calc(100% - 10px);margin-top: 0px;display: block;border-bottom: 1px solid #45a067;padding: 5px;border-radius: 0px;}
+#currentStock input {
+	width: calc(100% - 10px);
+	margin-top: 0px;
+	display: block;
+	border-bottom: 1px solid #45a067;
+	padding: 5px;
+	border-radius: 0px;
+}
 
 #currentStock input:first-child {
-    margin-top: 0px;
+	margin-top: 0px;
 }
 
 ul#additem {
-    color: #32b732;
-    cursor: pointer;
-    padding-left: 12px;
-    display: none;
-    width: 37px;
-    border: none;
+	color: #32b732;
+	cursor: pointer;
+	padding-left: 12px;
+	display: none;
+	width: 37px;
+	border: none;
 }
 
 #currentStock a.removelink {
-    color: red;
-    font-weight: 500;
-    display: block;
-    margin-top: 15px;
-    font-size: 18px;
-    margin-left: 0px;
-    width: 71px;
+	color: red;
+	font-weight: 500;
+	display: block;
+	margin-top: 15px;
+	font-size: 18px;
+	margin-left: 0px;
+	width: 71px;
 }
 
-#currentStock > span > a:last-child:not(.edit) {
-    margin-right: 15px;
+#currentStock>span>a:last-child:not(.edit) {
+	margin-right: 15px;
 }
-
 
 a.cancel {
-    color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.5);
 }
 
-ul.willRemove {display: none;}
-
+ul.willRemove {
+	display: none;
+}
 
 .edit ul#additem {
-    display: block;
+	display: block;
 }
 
 .stockbox.edit p {
-    margin: 0px;
-    color: #bfbfbf;
-    margin-top: 15px;
+	margin: 0px;
+	color: #bfbfbf;
+	margin-top: 15px;
 }
 
 .stockbox.edit p:first-child {
-    margin: 0px;
+	margin: 0px;
 }
 
 #header span {
-    float: right;
-    font-size: 19px;
-    font-weight: 300;
-    margin-top: 7px;
+	float: right;
+	font-size: 19px;
+	font-weight: 300;
+	margin-top: 7px;
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
 
 #header a {
-    margin-left: 15px;
+	margin-left: 15px;
 }
 
-
 #upcomingOrders ul:last-child {
-    border: none;
+	border: none;
 }
 
 .stockbox ul h2 span {
-    width: 50%;
+	width: 50%;
 }
 
 a#sendorder {
-    font-weight: 300;
-    float: right;
-    cursor: pointer;
+	font-weight: 300;
+	float: right;
+	cursor: pointer;
 }
 
 div#inputorder {
-    display: none;
-    padding: 10px;
-    background: #fff;
-    color: #bbbbbb;
-    border-radius: 10px;
-    box-shadow: 0px 1px 1px rgba(0,0,0,0.5);
-    font-size: 18px;
+	display: none;
+	padding: 10px;
+	background: #fff;
+	color: #bbbbbb;
+	border-radius: 10px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+	font-size: 18px;
 }
 
 #inputorder input[type="date"] {
-    width: inherit;
-    margin: 0px;
-    padding: 0px;
+	width: inherit;
+	margin: 0px;
+	padding: 0px;
 }
 
 #inputorder input[type="button"] {
-    background: none;
-    width: inherit;
-    border: none;
-    color: #45a067;
-    font-weight: 600;
-    float: right;
-    margin: 0px;
-    padding: 5px;
-    cursor: pointer;
+	background: none;
+	width: inherit;
+	border: none;
+	color: #45a067;
+	font-weight: 600;
+	float: right;
+	margin: 0px;
+	padding: 5px;
+	cursor: pointer;
 }
 
 div#inputorder.show {
-    display: block;
+	display: block;
 }
 
 a#sendorder.cancelorder {
-    color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.5);
 }
 
 #authbox p {
-    margin: 0px;
+	margin: 0px;
 }
 
 #authbox form {
-    text-align: end;
-};
+	text-align: end;
+}
 
-
+;
 span.helptext {
 	font-size: 16px;
 }
 
-
-input[type="submit"]#orderbut {width: inherit;border: none;color: #45a067;font-weight: 600;float: right;margin: 0px;padding: 2px;cursor: pointer;}
+input[type="submit"]#orderbut {
+	width: inherit;
+	border: none;
+	color: #45a067;
+	font-weight: 600;
+	float: right;
+	margin: 0px;
+	padding: 2px;
+	cursor: pointer;
+}
 
 select {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 form.messform {
-    background-color: #fff;
-    margin: 15px;
-    padding: 5px;
-    border-radius: 5px;
+	background-color: #fff;
+	margin: 15px;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 a.pred {
-    color: green;
-    float: initial!important;
-    margin-left: 15px;
-    
+	color: green;
+	float: initial!important;
+	margin-left: 15px;
+}
