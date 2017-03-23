@@ -140,10 +140,12 @@ def save(request):
 			if len(olditems) > 0:
 				olditem = olditems[0]
 				if float(get(d, i, 'kgpw')) != olditem.rate:
+					print 'not equall', float(get(d, i, 'kgpw')), olditem.rate
 					item.rate = float(get(d, i, 'kgpw'))
 				else:
 					if olditem.stock > item.stock:
 						daysdff = (datetime.date.today() - olditem.lastUpdated).days()
+						print 'daysdff', daysdff
 						amountdff = olditem.stock - item.stock
 						if daysdff > 0 and amountdff > 0:
 							print 'Updated Rate:', amountdff/daysdff
