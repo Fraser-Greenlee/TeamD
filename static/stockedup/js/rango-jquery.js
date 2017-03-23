@@ -56,7 +56,7 @@ function RemoveTriggers() {
 	});
 	$(".pred").click(function(event) {
 		box = $(this).parent().parent();
-		$.get('ajax/predict', {'name':$(box).children("[name='name']").val()}, function(data) {
+		$.get('/ajax/predict', {'name':$(box).children("[name='name']").val()}, function(data) {
 			console.log("data");
 			console.log(data);
 			$(box).children("[name='ppkg']").val(data);
