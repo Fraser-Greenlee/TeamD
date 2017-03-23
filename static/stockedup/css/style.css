@@ -364,3 +364,10 @@ input[type="submit"]#orderbut {width: inherit;border: none;color: #45a067;font-w
 select {
     font-size: 15px;
 }
+
+form.messform {
+    background-color: #fff;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
