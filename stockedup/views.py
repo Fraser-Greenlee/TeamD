@@ -48,7 +48,7 @@ def stock(request):
 			total += order['cost']  # Sums up cost
 			tempList += [order]
 		contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
-	contextDict['orders'] = sorted(contextDict['orders'], key=lambda k: months.index(k['date'].split(' ')[2]))
+	contextDict['orders'] = sorted(contextDict['orders'], key=lambda k: (months.index(k['date'].split(' ')[2], k['date'].split(' ')[1])))
 	return render(request, 'stockedup/stock.html', context=contextDict)
 
 @login_required
