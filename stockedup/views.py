@@ -136,6 +136,7 @@ def upcomingorders(request):
 				total += order['cost']  # Sums up cost
 				tempList += [order]
 			contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
+	print 'hi'
 	return render(request, 'stockedup/upcomingorders.html', context=contextDict)
 
 
