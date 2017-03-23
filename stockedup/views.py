@@ -23,7 +23,7 @@ def stock(request):
 			{'name': item.name, 'from': item.supplier, 'kgpw': item.rate, 'amount': item.stock, 'ppkg': 2}]
 		if item.rate != 0:
 			orders += [(int(item.stock / item.rate), item)]  # Creates tuple: order = (Days Left, Item)
-	sorted(orders, key=lambda order: order[0])  # Sort by days lasting
+	orders = sorted(orders, key=lambda order: order[0])  # Sort by days lasting
 	days = ("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
 	months = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 	# Sorts the orders into a dictionary with keys of the day
@@ -47,6 +47,9 @@ def stock(request):
 			tempList += [order]
 		contextDict['orders'] += [{'date': day, 'total': total, 'orders': tempList}]
 		# sample data
+	contextDict['orders'] = sorted(contextDict['orders'], key=lambda k: months.index(k['date'].split(' ')[2]))
+	#contextDict['orders'] = sorted(contextDict['orders'], key=lambda k: k['date'].split(' ')[1])
+	pprint.pprint(contextDict)
 	return render(request, 'stockedup/stock.html', context=contextDict)
 
 @login_required
