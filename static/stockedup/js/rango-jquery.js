@@ -72,7 +72,7 @@ function SaveCancelTriggers() {
 	//
 	$("#currentStock a.save").click( function(event) {
 		newValues = [];
-		$("#currentStock ul:not(#additem)").each(function(i) {
+		$("#currentStock ul:not(#additem):not(.willRemove)").each(function(i) {
 			data = {
 				'name':$(this).children("[name='name']").val(),
 				'from':$(this).children("[name='from']").val(),
@@ -95,12 +95,12 @@ function SaveCancelTriggers() {
 			if (data != 'saved') {
 				alert('Error saving: '+data);
 			}
+			refreshUpcomingOrders();
 		});
 		// TODO refresh upcoming orders after
 		$("#currentStock > span").html('<h1>Stock</h1><a class="edit">Edit</a>');
 		EditTrigger();
 		$("#currentStock").removeClass("edit");
-		refreshUpcomingOrders();
 	});
 }
 
