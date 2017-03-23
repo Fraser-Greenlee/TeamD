@@ -1,12 +1,13 @@
 $(document).ready(function(){
+	refreshOrderSelect();
 	$("ul#additem").click( function(event) {
 		if ($("#currentStock").hasClass("edit")) {
 			newHtml =  '<ul>';
 			newHtml += '<p>name</p><input type="text" name="name">';
 			newHtml += '<p>supplier</p><input type="text" name="from" placeholder="name"><input type="email" placeholder="email address" name="fromemail">';
-			newHtml += '<p>amount (kg)<a class="pred">predict</a></p><input type="number" name="amount">';
+			newHtml += '<p>amount (kg)</p><input type="number" name="amount">';
 			newHtml += '<p>kg per week</p><input type="number" name="kgpw">';
-			newHtml += '<p>price per kg</p><input type="number" name="ppkg">';
+			newHtml += '<p>price per kg<a class="pred">predict</a></p><input type="number" name="ppkg">';
 			newHtml += '<a class="removelink">Remove</a>';
 			newHtml +=  '</ul>';
 			$(newHtml).insertBefore("#currentStock ul:last-child");
@@ -57,8 +58,6 @@ function RemoveTriggers() {
 	$(".pred").click(function(event) {
 		box = $(this).parent().parent();
 		$.get('/ajax/predict', {'name':$(box).children("[name='name']").val()}, function(data) {
-			console.log("data");
-			console.log(data);
 			$(box).children("[name='ppkg']").val(data);
 		});
 	});
@@ -115,5 +114,26 @@ function SaveCancelTriggers() {
 function refreshUpcomingOrders() {
 	$.get('/ajax/upcomingorders', function(data) {
 		$("#upcomingOrders > li").html(data);
+		refreshOrderSelect();
 	});
+}
+
+function refreshOrderSelect() {
+	$("[name='ordertill']").html("");
+	$("#upcomingOrders li h2 span:first-child").each(
+		function(i) {
+			orderInfo = [];
+			orderElms = $($(this).parent().parent()[0]).find("li ul");
+			for (i = 0; i < orderElms.length; i++) {
+				children = $(orderElms[i]).find("span");
+				orderInfo.push({
+					name			:	children[0].innerText,
+					amount		:	children[2].innerText,
+					cost			:	children[1].innerText,
+					fromemail : $(orderElms[i]).attr("data-fromemail")
+				});
+			}
+			$("[name='ordertill']").append($('<option>', {value: JSON.stringify(orderInfo),text: this.innerText}));
+		}
+	);
 }

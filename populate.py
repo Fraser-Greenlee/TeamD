@@ -23,9 +23,9 @@ def populate():
 		s.save()
 	#
 	for user in User.objects.all():
-		Item(user=user, supplier=ss[0], name='Carrots',rate='5', cost=0.6, stock=13.5, lastUpdated=NdaysAgo(3)).save()
-		Item(user=user, supplier=ss[2], name='Soup', 	rate='9', cost=0.9, stock=15.0, lastUpdated=NdaysAgo(1)).save()
-		Item(user=user, supplier=ss[0], name='Steak', 	rate='15',cost=1.9, stock=23.0, lastUpdated=NdaysAgo(1)).save()
+		Item(user=user, supplier=ss[0], name='Carrots',rate=5.0, cost=0.6, stock=13.5, lastUpdated=NdaysAgo(9)).save()
+		Item(user=user, supplier=ss[2], name='Soup', 	rate=9.0, cost=0.9, stock=15.0, lastUpdated=NdaysAgo(3)).save()
+		Item(user=user, supplier=ss[0], name='Steak', 	rate=15.0,cost=1.9, stock=23.0, lastUpdated=NdaysAgo(1)).save()
 
 # Start execution here!
 if __name__ == '__main__':

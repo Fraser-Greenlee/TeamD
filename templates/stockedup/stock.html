@@ -21,10 +21,7 @@
 			<div id="inputorder">
 				<form action="/ordertill" method="post">
 					{% csrf_token %}
-					Order stock for <select name="ordertill">{% for day in orders %}
-																												<option value="{% for order in day.orders %}{{ order.name }},{{ order.amount }},{{ order.cost }},{{ order.from.email }},,{% endfor %}">{{ day.date }}</option>
-																											{% endfor %}
-																										</select> <input id="orderbut" type="submit" value="Submit" />
+					Order stock for <select name="ordertill"></select> <input id="orderbut" type="submit" value="Submit" />
 				</form>
 			</div>
 			<li>
@@ -33,7 +30,7 @@
 						<h2><span>{{ day.date }}</span><span id="amount">£{{ day.total }}</span></h2>
 						<li>
 							{% for order in day.orders %}
-								<ul><span>{{ order.name }}</span><span>£{{ order.cost }}</span><span>{{ order.amount }}kg</span></ul>
+								<ul data-fromemail="{{ order.from.email }}"><span>{{ order.name }}</span><span>£{{ order.cost }}</span><span>{{ order.amount }}kg</span></ul>
 							{% endfor %}
 						</li>
 					</ul>
