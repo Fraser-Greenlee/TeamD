@@ -113,7 +113,7 @@ function SaveCancelTriggers() {
 }
 
 function refreshUpcomingOrders() {
-	$.get('ajax/upcomingorders', function(data) {
+	$.get('/ajax/upcomingorders', function(data) {
 		$("#upcomingOrders > li").html(data);
 	});
 }
