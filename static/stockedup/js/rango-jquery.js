@@ -1,3 +1,29 @@
+// get cookie by name
+function getCookie(name) {
+	var cookieValue = null;
+	// if has cookies
+	if (document.cookie && document.cookie !== '') {
+		// get list of all kookies
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = $.trim(cookies[i]);
+			// if cookie name == name
+			if (cookie.substring(0, name.length + 1) === (name + '=')) {
+				// get value
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
+// get csrftoken for POST requests
+// We opted not to use rendering for getting the token as we want to keep our JS and HTML seperate.
+$.ajaxSetup({
+  data: {csrfmiddlewaretoken: getCookie('csrftoken') },
+});
+
+// on page load
 $(document).ready(function(){
 	// get order select input options
 	refreshOrderSelect();
@@ -113,7 +139,8 @@ function SaveCancelTriggers() {
 			newValues.push(data);
 		});
 		// send newValues over ajax to update database
-		$.get('/ajax/save', {'len':newValues.length, 'data': newValues}, function(data){
+		// Put in dict so crf token value can be added
+		$.post('/ajax/save', {'data':JSON.stringify(newValues)}, function(data){
 			if (data != 'saved') {
 				alert('Error saving: '+data);
 			}

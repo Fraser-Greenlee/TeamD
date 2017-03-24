@@ -89,7 +89,7 @@ I would like to order,
 {amount} of {name} for {cost}
 """.format(**item)
 		# make receipt message for user
-		receipt = u'''Your last orders,
+		receipt = '''Your last orders,
 '''
 		for address in emails.keys():
 			# Not Sending to suppliers since we don't use real email addresses. Would be,
@@ -115,7 +115,7 @@ def upcomingorders(request):
 def pred(request):
 	# search tesco shopping api for a product of the same name,
 	# taking only 1 result with no offset
-	results = json.loads(requests.get('https://dev.tescolabs.com/grocery/products/?query=' + request.GET['name'] + '&offset=0&limit=1', headers={'Ocp-Apim-Subscription-Key': '14a1586c048a4159ad48693976e74894'}).content)['uk']['ghs']['products']['results'])
+	results = json.loads(requests.get('https://dev.tescolabs.com/grocery/products/?query=' + request.GET['name'] + '&offset=0&limit=1', headers={'Ocp-Apim-Subscription-Key': '14a1586c048a4159ad48693976e74894'}).content)['uk']['ghs']['products']['results']
 	if len(results) > 0:
 		return HttpResponse(results[0]['unitprice'])
 	else:
@@ -124,33 +124,32 @@ def pred(request):
 
 @login_required
 def save(request):
-	if request.method == 'GET':
+	if request.method == 'POST':
 		# d is of the form,
-		# d = {'len':i,'data[0][amount]':amount,'data[0][ppkg]':val,,'data[i][amount]':amount,,}
-		d = request.GET
+		# d = [{'ppkg': '2', 'from': 'Bean Bros', 'name': 'Carrots', 'fromemail': 'B@mail.com', 'amount': '13.50', 'kgpw': '5.00'},,,]
+		d = json.loads(request.POST['data'])
 		# get current user items
 		olditems = Item.objects.filter(user=request.user)
 		# delete all user items from the database
-		delete_user_items(request)
-		for i in range(int(d['len'])):
+		Item.objects.filter(user=request.user).delete()
+		for row in d:
 			# find/create item supplier + item
-			s = Supplier.objects.get_or_create(name=get(d, i, 'from'), email=get(d, i, 'fromemail'))[0]
-			item = Item.objects.get_or_create(user=request.user, name=get(d, i, 'name'), supplier=s)[0]
-			item.stock = float(get(d, i, 'amount'))
-			item.cost = float(get(d, i, 'ppkg'))
+			s = Supplier.objects.get_or_create(name=row['from'], email=row['fromemail'])[0]
+			item = Item.objects.get_or_create(user=request.user, name=row['name'], supplier=s)[0]
+			item.stock = float(row['amount'])
+			item.cost = float(row['ppkg'])
 			# find item of same name in olditems
 			previtems = olditems.filter(name=item.name)
 			if len(previtems) > 0:
-				previtem = previtem[0]
+				previtem = previtems[0]
 				# if found check rate has not been changed
-				if float(get(d, i, 'kgpw')) != olditem.rate:
-					print 'not equall', float(get(d, i, 'kgpw')), olditem.rate
-					item.rate = float(get(d, i, 'kgpw'))
+				if float(row['kgpw']) != previtem.rate:
+					item.rate = float(row['kgpw'])
 				else:
 					# calculate new kg/week
-					if olditem.stock > item.stock:
-						weeksdff = (datetime.date.today() - olditem.lastUpdated).days()/7
-						amountdff = olditem.stock - item.stock
+					if previtem.stock > item.stock:
+						weeksdff = (datetime.date.today() - previtem.lastUpdated).days()/7
+						amountdff = previtem.stock - item.stock
 						print 'weeksdff', weeksdff
 						if weeksdff > 0 and amountdff > 0:
 							print 'Updated Rate:', amountdff / weeksdff
@@ -159,18 +158,4 @@ def save(request):
 			item.save()
 		return HttpResponse("saved")
 	else:
-		return HttpResponse("must be GET request")
-
-
-##	Functions for use in save
-
-def get(data, i, k):
-	return data[make_key(i, k)]
-
-def make_key(i, k):
-	return 'data[' + str(i) + '][' + k + ']'
-
-def delete_user_items(request):
-	Item.objects.filter(user=request.user).delete()
-
-##
+		return HttpResponse("must be POST request")
